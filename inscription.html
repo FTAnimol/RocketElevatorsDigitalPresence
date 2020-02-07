@@ -1,0 +1,272 @@
+<html>
+<head>
+<title>Inscription</title>
+
+<link href="assets/css/Inscription.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+<!-- Logo -->
+<a class="logo float-left scrollTo" href="#top">
+<img src="assets/images/_smarty/rocket-elevator-logo.png" alt="" width="220" height="80"/>
+</a>
+</body>
+
+<body>
+
+
+
+<!-- Inscription -->
+
+<center>
+
+<form action="">
+<legend><h3><b>Informations</b></h3></legend>
+<br>
+<h3>Prénom</h3><br>
+<input type="text" name="firstname" size="40">
+<br>
+<h3>Nom de famille</h3><br>
+<input type="text" name="lastname" size="40">
+<br>
+<h3>Adress postale</h3><br>
+<input type="text" name="adress" size="40">
+<br>
+<h3>Numéro de téléphone</h3><br>
+<input type="text" name="phone" size="40">
+<br>
+<h3>Mot de passe</h3><br>
+<input type="password" name="password" size="40">
+<br>
+<h3>Confirmation du mot de passe</h3><br>
+<input type="password" name="confirmation" size="40">
+<br>
+<h3>Adresse email</h3><br>
+<input type="text" name="email" size="40">
+<br>
+<h3>Sujet*</h3><br>
+<textarea rows="10" cols="50" name="topic" type="text">
+   
+    </textarea>
+    
+<br><br>
+
+<body>
+
+Type d'immeuble<br>
+<select id="immeuble" onchange="toggleSection()">
+    <option value="selection">---Selectionner---</option>
+    <option value="residentiel">Résidentiel</option>
+    <option value="commercial">Commercial</option>
+    <option value="corporatif">Corporatif</option>
+    <option value="hybride">Hybride</option>
+</select>
+<br><br>
+
+<div id="appartements">
+    nombre d'appartements que contient l'immeuble<br>
+    <input type="number" name="cages"
+           min="0" max="100"s>
+    </div>
+
+<br>
+
+<div id="cages">
+nombre de cages d'ascenseur à déployer<br>
+<input type="number" name="cages"
+       min="0" max="100"s>
+</div>
+
+<br>
+
+<br>
+
+<div id="heures">
+nombre d’heures d’activité de l’immeuble par jour<br>
+<input type="number" name="heures"
+       min="0" max="24">
+</div>
+
+       <br>
+
+<div id="commerces">
+       nombre de commerces distincts<br>
+<input type="number" name="commerces"
+       min="0" max="100"s>
+</div>
+
+       <br>
+
+<div id="occupants-maximum">
+       nombre d’occupants maximum par étage<br>
+       <input type="number" name="occupants-maximum"
+              min="0" max="100"s>
+</div>
+    
+    <br>
+
+<div id="stationnements">
+    nombre de places de stationnement disponibles<br>
+    <input type="number" name="stationnements"
+           min="0" max="100"s>
+</div>
+           <br>
+
+<div id="sous-sols">
+           nombre de sous-sols que contient l’immeuble<br>
+           <input type="number" name="sous-sols"
+               min="0" max="5"s>
+</div>
+    <br>           
+
+<div id="etages">
+    nombre d'étages que contient l'immeuble<br>
+    <input type="number" name="etages"
+        min="0" max="100">
+
+        <br>
+</div>
+
+
+<br><br>
+
+<div id="f-commercial">
+       <p><h3>Commercial</h3></p>
+       <p>Si le type d’immeuble est commercial, le nombre de cages d'ascenseurs à déployer est spécifié et le nombre de cages estimées est égal au nombre requis.</p>
+           
+           <input type="text" id="input-com"/>
+           
+           <button onclick="calc();">=</button>
+   
+           <input type="number" id="result" value="0"/>
+   
+   </div>
+   
+   <br>
+   
+   <div id="f-residentiel">
+       <p><h3>Residentiel</h3></p>
+       <p></p>
+           
+       <input type="text" id="input-res"/>
+       
+       <button onclick="calc();">=</button>
+   
+       <input type="number" id="result" value="0"/>
+   
+   </div>
+   
+   <br>
+   
+   <div id="f-h-ou-c">
+       <p><h3>Hybride ou Corporatif</h3></p>
+           
+       <input type="text" id="input-hybcorp"/>
+       
+       <button onclick="calc();">=</button>
+   
+       <input type="number" id="result" value="0"/>
+   
+</div>
+
+<input type="button" id="calculs" onclick="window.location.href = 'calcul.html';" value="suivant"/> <br>
+
+<br>
+
+<input type="button" id="retour" onclick="window.location.href = 'index.html';" value="Retour à la page d'accueil"/> <br>
+
+</form>
+
+</center>
+
+<script>
+
+document.getElementById('appartements').style.display = "none";
+document.getElementById('cages').style.display = "none";
+document.getElementById('heures').style.display = "none";
+document.getElementById('commerces').style.display = "none";
+document.getElementById('occupants-maximum').style.display = "none";
+document.getElementById('stationnements').style.display = "none";
+document.getElementById('sous-sols').style.display = "none";
+document.getElementById('etages').style.display = "none";
+document.getElementById('f-commercial').style.display = "none";
+document.getElementById('f-residentiel').style.display = "none";
+document.getElementById('f-h-ou-c').style.display = "none";
+
+function toggleSection(){
+var choix = document.getElementById('immeuble').value;
+
+if (choix == "residentiel") {
+document.getElementById('appartements').style.display = "block";
+document.getElementById('cages').style.display = "none";
+document.getElementById('heures').style.display = "none";
+document.getElementById('commerces').style.display = "none";
+document.getElementById('occupants-maximum').style.display = "none";
+document.getElementById('stationnements').style.display = "none";
+document.getElementById('sous-sols').style.display = "block";
+document.getElementById('etages').style.display = "block";
+document.getElementById('f-commercial').style.display = "none";
+document.getElementById('f-residentiel').style.display = "block";
+document.getElementById('f-h-ou-c').style.display = "none";
+} else if (choix == "commercial") {
+document.getElementById('appartements').style.display = "none";
+document.getElementById('cages').style.display = "block";
+document.getElementById('heures').style.display = "none";
+document.getElementById('commerces').style.display = "block";
+document.getElementById('occupants-maximum').style.display = "none";
+document.getElementById('stationnements').style.display = "block";
+document.getElementById('sous-sols').style.display = "block";
+document.getElementById('etages').style.display = "block";
+document.getElementById('f-commercial').style.display = "block";
+document.getElementById('f-residentiel').style.display = "none";
+document.getElementById('f-h-ou-c').style.display = "none";
+} else if (choix == "corporatif") {
+document.getElementById('appartements').style.display = "none";
+document.getElementById('cages').style.display = "none";
+document.getElementById('heures').style.display = "none";
+document.getElementById('commerces').style.display = "block";
+document.getElementById('occupants-maximum').style.display = "block";
+document.getElementById('stationnements').style.display = "block";
+document.getElementById('sous-sols').style.display = "block";
+document.getElementById('etages').style.display = "block";
+document.getElementById('f-commercial').style.display = "none";
+document.getElementById('f-residentiel').style.display = "none";
+document.getElementById('f-h-ou-c').style.display = "block";
+} else if (choix == "hybride") {
+document.getElementById('appartements').style.display = "none";
+document.getElementById('cages').style.display = "none";
+document.getElementById('heures').style.display = "block";
+document.getElementById('commerces').style.display = "block";
+document.getElementById('occupants-maximum').style.display = "block";
+document.getElementById('stationnements').style.display = "block";
+document.getElementById('sous-sols').style.display = "block";
+document.getElementById('etages').style.display = "block";
+document.getElementById('f-commercial').style.display = "none";
+document.getElementById('f-residentiel').style.display = "none";
+document.getElementById('f-h-ou-c').style.display = "block";
+} else {
+document.getElementById('appartements').style.display = "none";
+document.getElementById('cages').style.display = "none";
+document.getElementById('heures').style.display = "none";
+document.getElementById('commerces').style.display = "none";
+document.getElementById('occupants-maximum').style.display = "none";
+document.getElementById('stationnements').style.display = "none";
+document.getElementById('sous-sols').style.display = "none";
+document.getElementById('etages').style.display = "none";
+document.getElementById('f-commercial').style.display = "none";
+document.getElementById('f-residentiel').style.display = "none";
+document.getElementById('f-h-ou-c').style.display = "none";
+}
+}
+
+</script>
+
+
+
+</body>
+
+<!-- /Inscription -->
+
+</html>
